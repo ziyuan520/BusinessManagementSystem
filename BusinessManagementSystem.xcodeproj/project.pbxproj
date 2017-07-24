@@ -6,6 +6,14 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0DEFD5371F263AE20037E5FE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52D1F263AE20037E5FE /* main.cpp */; };
+		0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52F1F263AE20037E5FE /* Handle.cpp */; };
+		0DEFD5391F263AE20037E5FE /* EventController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5311F263AE20037E5FE /* EventController.cpp */; };
+		0DEFD53A1F263AE20037E5FE /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5341F263AE20037E5FE /* Controller.cpp */; };
+		0DEFD53B1F263AE20037E5FE /* CatalogueController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		0DEFD50E1F249F110037E5FE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +28,16 @@
 
 /* Begin PBXFileReference section */
 		0DEFD5101F249F110037E5FE /* BusinessManagementSystem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusinessManagementSystem; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DEFD52D1F263AE20037E5FE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0DEFD52E1F263AE20037E5FE /* Handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handle.h; sourceTree = "<group>"; };
+		0DEFD52F1F263AE20037E5FE /* Handle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Handle.cpp; sourceTree = "<group>"; };
+		0DEFD5301F263AE20037E5FE /* EventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventController.h; sourceTree = "<group>"; };
+		0DEFD5311F263AE20037E5FE /* EventController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventController.cpp; sourceTree = "<group>"; };
+		0DEFD5321F263AE20037E5FE /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		0DEFD5331F263AE20037E5FE /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		0DEFD5341F263AE20037E5FE /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
+		0DEFD5351F263AE20037E5FE /* CatalogueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueController.h; sourceTree = "<group>"; };
+		0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CatalogueController.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +70,16 @@
 		0DEFD5121F249F110037E5FE /* BusinessManagementSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0DEFD52D1F263AE20037E5FE /* main.cpp */,
+				0DEFD52E1F263AE20037E5FE /* Handle.h */,
+				0DEFD52F1F263AE20037E5FE /* Handle.cpp */,
+				0DEFD5301F263AE20037E5FE /* EventController.h */,
+				0DEFD5311F263AE20037E5FE /* EventController.cpp */,
+				0DEFD5321F263AE20037E5FE /* Data.h */,
+				0DEFD5331F263AE20037E5FE /* Controller.h */,
+				0DEFD5341F263AE20037E5FE /* Controller.cpp */,
+				0DEFD5351F263AE20037E5FE /* CatalogueController.h */,
+				0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */,
 			);
 			path = BusinessManagementSystem;
 			sourceTree = "<group>";
@@ -113,6 +141,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEFD5391F263AE20037E5FE /* EventController.cpp in Sources */,
+				0DEFD53B1F263AE20037E5FE /* CatalogueController.cpp in Sources */,
+				0DEFD5371F263AE20037E5FE /* main.cpp in Sources */,
+				0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */,
+				0DEFD53A1F263AE20037E5FE /* Controller.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
