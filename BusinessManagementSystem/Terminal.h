@@ -1,15 +1,14 @@
 //
-//  main.cpp
+//  Terminal.h
 //  BusinessManagementSystem
 //
 //  Created by Lean on 2017/7/23.
 //  Copyright © 2017年 Lean. All rights reserved.
 //
 
-#include <iostream>
+#ifndef Terminal_h
+#define Terminal_h
 
-int main(int argc, const char * argv[])
-{
-    
-    
-}
+#include <stdio.h>
+
+#endif /* Terminal_h */
