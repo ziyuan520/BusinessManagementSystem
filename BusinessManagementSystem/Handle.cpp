@@ -86,7 +86,7 @@ void DisplayEventList(CatalogueData* List,char* cmd,int* index)//未完成
     
     cin>>tmp;
     
-    if(tmp<=List[*index-1].Total&&tmp>=1)
+    if(tmp<=List[*index-1].Total&&tmp>=1&&List[*index-1].Total!=0)
     {
         *cmd='c';
         *index=tmp;
