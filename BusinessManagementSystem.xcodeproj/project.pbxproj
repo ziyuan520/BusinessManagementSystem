@@ -6,14 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		0DEFD5141F249F110037E5FE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5131F249F110037E5FE /* main.cpp */; };
-		0DEFD51E1F24A10B0037E5FE /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD51C1F24A10B0037E5FE /* Event.cpp */; };
-		0DEFD5211F24A1490037E5FE /* Catalogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD51F1F24A1490037E5FE /* Catalogue.cpp */; };
-		0DEFD5241F24A2A10037E5FE /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5221F24A2A10037E5FE /* Controller.cpp */; };
-		0DEFD5271F24A9F80037E5FE /* Terminal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5251F24A9F80037E5FE /* Terminal.cpp */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		0DEFD50E1F249F110037E5FE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -28,15 +20,6 @@
 
 /* Begin PBXFileReference section */
 		0DEFD5101F249F110037E5FE /* BusinessManagementSystem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusinessManagementSystem; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DEFD5131F249F110037E5FE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		0DEFD51C1F24A10B0037E5FE /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
-		0DEFD51D1F24A10B0037E5FE /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		0DEFD51F1F24A1490037E5FE /* Catalogue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Catalogue.cpp; sourceTree = "<group>"; };
-		0DEFD5201F24A1490037E5FE /* Catalogue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catalogue.h; sourceTree = "<group>"; };
-		0DEFD5221F24A2A10037E5FE /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
-		0DEFD5231F24A2A10037E5FE /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		0DEFD5251F24A9F80037E5FE /* Terminal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Terminal.cpp; sourceTree = "<group>"; };
-		0DEFD5261F24A9F80037E5FE /* Terminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terminal.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,15 +52,6 @@
 		0DEFD5121F249F110037E5FE /* BusinessManagementSystem */ = {
 			isa = PBXGroup;
 			children = (
-				0DEFD5131F249F110037E5FE /* main.cpp */,
-				0DEFD51D1F24A10B0037E5FE /* Event.h */,
-				0DEFD5201F24A1490037E5FE /* Catalogue.h */,
-				0DEFD5231F24A2A10037E5FE /* Controller.h */,
-				0DEFD5261F24A9F80037E5FE /* Terminal.h */,
-				0DEFD51C1F24A10B0037E5FE /* Event.cpp */,
-				0DEFD51F1F24A1490037E5FE /* Catalogue.cpp */,
-				0DEFD5221F24A2A10037E5FE /* Controller.cpp */,
-				0DEFD5251F24A9F80037E5FE /* Terminal.cpp */,
 			);
 			path = BusinessManagementSystem;
 			sourceTree = "<group>";
@@ -139,11 +113,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DEFD5211F24A1490037E5FE /* Catalogue.cpp in Sources */,
-				0DEFD51E1F24A10B0037E5FE /* Event.cpp in Sources */,
-				0DEFD5141F249F110037E5FE /* main.cpp in Sources */,
-				0DEFD5271F24A9F80037E5FE /* Terminal.cpp in Sources */,
-				0DEFD5241F24A2A10037E5FE /* Controller.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
