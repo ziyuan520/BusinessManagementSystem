@@ -49,6 +49,7 @@ void Start()
 void DisplayCatalogueList(CatalogueData* List,char* cmd,int* index)
 {
     int tmp;
+    cout<<"————————————————————"<<endl;
     cout<<"——欢迎使用事务管理系统——"<<endl;
     cout<<"——————— 列表 ————————"<<endl;
     PrintCatalogueList(List, 3);
@@ -84,13 +85,25 @@ void DisplayEventList(CatalogueData* List,char* cmd,int* index)//未完成
     cout<<"输入-1添加事项(0退回):";
     
     cin>>tmp;
-    if(tmp==0)
-    {
-        
-    }
+    
     if(tmp<=List[*index-1].Total&&tmp>=1)
     {
         *cmd='c';
         *index=tmp;
+    }
+    else if(tmp==-1)
+    {
+        //在该列表下添加事项
+        cout<<"该功能尚未完成"<<endl;
+    }
+    else if(tmp==0)
+    {
+        *cmd='a';
+        *index=0;
+    }
+    else
+    {
+        cout<<"输入有误"<<endl;
+        //待修改：重置输入流
     }
 }
