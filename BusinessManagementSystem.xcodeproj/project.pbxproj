@@ -70,16 +70,16 @@
 		0DEFD5121F249F110037E5FE /* BusinessManagementSystem */ = {
 			isa = PBXGroup;
 			children = (
-				0DEFD52D1F263AE20037E5FE /* main.cpp */,
-				0DEFD52E1F263AE20037E5FE /* Handle.h */,
-				0DEFD52F1F263AE20037E5FE /* Handle.cpp */,
+				0DEFD5321F263AE20037E5FE /* Data.h */,
 				0DEFD5301F263AE20037E5FE /* EventController.h */,
 				0DEFD5311F263AE20037E5FE /* EventController.cpp */,
-				0DEFD5321F263AE20037E5FE /* Data.h */,
-				0DEFD5331F263AE20037E5FE /* Controller.h */,
-				0DEFD5341F263AE20037E5FE /* Controller.cpp */,
 				0DEFD5351F263AE20037E5FE /* CatalogueController.h */,
 				0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */,
+				0DEFD5331F263AE20037E5FE /* Controller.h */,
+				0DEFD5341F263AE20037E5FE /* Controller.cpp */,
+				0DEFD52E1F263AE20037E5FE /* Handle.h */,
+				0DEFD52F1F263AE20037E5FE /* Handle.cpp */,
+				0DEFD52D1F263AE20037E5FE /* main.cpp */,
 			);
 			path = BusinessManagementSystem;
 			sourceTree = "<group>";

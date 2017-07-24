@@ -21,13 +21,14 @@ void Start()
 {
     CatalogueData List[3];
     char All_Event[30]="All Event";
-    char Shedule[30]="Schedule";
+    char Schedule[30]="Schedule";
     char Finished[30]="Finished";
     
     
     SetCatalogue(&List[0], 0, All_Event, nullptr);
-    SetCatalogue(&List[0], 0, All_Event, nullptr);
-    SetCatalogue(&List[0], 0, All_Event, nullptr);
+    SetCatalogue(&List[1], 0, Schedule, nullptr);
+    SetCatalogue(&List[2], 0, Finished, nullptr);
+  //  cout<<List[2].Name<<endl;
     //待修改：需从数据库中读取Event数据 暂用nullptr代替 
     
     char cmd = 'a';

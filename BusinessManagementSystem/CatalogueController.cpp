@@ -16,13 +16,7 @@ using namespace std;
 
 void SetCatalogue(CatalogueData *Catalogue,int total,char *name,EventData *Event)
 {
-   if(Catalogue->Total<10)
-   {
        Catalogue->Total=total;
        strcpy(Catalogue->Name,name);
        Catalogue->EventIndex[Catalogue->Total]=Event;
-   }
-   else{
-       cout<<"error,分类已满"<<endl;
-   }
 }

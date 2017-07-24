@@ -55,7 +55,7 @@ void PrintEvent(EventData *Event)
     }
 }
 
-int CreatOneEvent(CatalogueData *Catalogue)
+int CreatOneEvent(CatalogueData *Catalogue)  //未完成
 {
     if(Catalogue->Total<10)
     {
@@ -79,14 +79,14 @@ int CreatOneEvent(CatalogueData *Catalogue)
         cout<<"结束时间";
         cin>>end;
         //待修改：检测输入是否合法，输入当前系统时间
-        SetEvent(Event, type, title, detail, begin, end);
+        //SetEvent(Event, type, title, detail, begin, end);
     
         
         return 1;
     }
     else
     {
-        cout<<"error，该分类已满"<<endl;
+        cout<<"error，该分类已满，无法添加"<<endl;
     }
     
     return 0;
