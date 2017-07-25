@@ -18,8 +18,12 @@
 
 void Start();
 
-void DisplayCatalogueList(CatalogueData* List,char* cmd,int* index);
+void DisplayCatalogueList(CatalogueData* List,char* Cmd,int* Index);
 
-void DisplayEventList(CatalogueData* List,char* cmd,int* index);
+void DisplayEventList(CatalogueData* List,char* Cmd,int* Index);
+
+void DisplayEvent(CatalogueData* List,char* Cmd,int* Index);
+
+void AddEvent(CatalogueData* List,char* Cmd,int* Index);
 
 #endif /* Handle_hpp */

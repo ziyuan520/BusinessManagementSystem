@@ -20,7 +20,7 @@ int PrintEventList(CatalogueData *Catalogue);
 
 void PrintEvent(EventData *Event);
 
-//void CreatOneEvent();
+int CreatOneEvent(CatalogueData *Catalogue);
 
 //void DeleteOneEvent();
 

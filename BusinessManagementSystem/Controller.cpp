@@ -55,11 +55,11 @@ void PrintEvent(EventData *Event)
     }
 }
 
-int CreatOneEvent(CatalogueData *Catalogue)  //未完成
+int CreatOneEvent(CatalogueData *Catalogue)
 {
     if(Catalogue->Total<10)
     {
-        
+        EventData *Event=new EventData;
         
         int type=0;
         char title[100];
@@ -67,26 +67,32 @@ int CreatOneEvent(CatalogueData *Catalogue)  //未完成
         int begin=0;
         int end=0;
         
-        cout<<"标题:";
+        cin.clear();
+        cin.ignore();
+        
+        cout<<"标题 :";
         cin.getline(title,100);
-        cout<<"内容:";
+        cout<<"内容 :";
         cin.getline(detail,500);
         //待修改:getline(cin,string str),检测str长度是否超出字数限制
         
-        cout<<"输入时间(如：2017年07月18日输入为20170718)，不输入则设定为今日："<<endl;
-        cout<<"开始时间：";
+        //待修改
+        cout<<"时间(2017/07/18,则输入20170718)，不输入则设定为今日："<<endl;
+        cout<<"开始时间 :";
         cin>>begin;
-        cout<<"结束时间";
+        cout<<"结束时间 :";
         cin>>end;
         //待修改：检测输入是否合法，输入当前系统时间
-        //SetEvent(Event, type, title, detail, begin, end);
-    
+        SetEvent(Event, type, title, detail, begin, end);
+        
+        Catalogue->EventIndex[Catalogue->Total]=Event;
+        Catalogue->Total++;
         
         return 1;
     }
     else
     {
-        cout<<"error，该分类已满，无法添加"<<endl;
+        cout<<"error，该分类已满"<<endl;
     }
     
     return 0;

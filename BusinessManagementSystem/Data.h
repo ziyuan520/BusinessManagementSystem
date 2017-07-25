@@ -20,7 +20,7 @@ struct EventData{
 struct CatalogueData{
     int Total;
     char Name[30];
-    EventData *EventIndex[10];
+    EventData *EventIndex[10];  //每个分类下最大10个事项，
 };
 
 #endif /* Data_h */
