@@ -13,6 +13,7 @@
 #include "CatalogueController.h"
 
 #include <iostream>
+#include <string.h>
 #include <string>
 
 using namespace std;
@@ -85,7 +86,7 @@ void DisplayEventList(CatalogueData* List,char* Cmd,int* Index)
     PrintEventList(&List[Index[0]-1]);
     
     if(List[Index[0]-1].Total!=0)
-    {cout<<"请输入你要查看的事项编号,\n";}
+    cout<<"请输入你要查看的事项编号,\n";
     
     cout<<"(0 后退|-1 添加事项):";
     
@@ -93,14 +94,11 @@ void DisplayEventList(CatalogueData* List,char* Cmd,int* Index)
     
     if(tmp<=List[Index[0]-1].Total&&tmp>=1)
     {
-        //*Cmd='c';
+        *Cmd='c';
         Index[1]=tmp;
-        cout<<"该功能尚未完成"<<endl;
     }
     else if(tmp==-1)
     {
-        //在该列表下添加事项
-
         *Cmd='d';
     }
     else if(tmp==0)
@@ -122,7 +120,6 @@ void DisplayEvent(CatalogueData* List,char* Cmd,int* Index)
     int tmp;
     cout<<"————————————————————"<<endl;
     PrintEvent(List[Index[0]-1].EventIndex[Index[1]-1]);
-    
     cout<<"(0 后退|-1 修改事项|-2 删除事项): ";
     cin>>tmp;
     
@@ -160,3 +157,87 @@ void AddEvent(CatalogueData* List,char* Cmd,int* Index)
     *Cmd='b';
     //(*Index=*Index;)
 }
+
+void PrintCatalogueList(CatalogueData *Catalogue,int Number)
+{
+    for(int i=0;i<Number;i++)
+    {
+        cout<<i+1<<"."<<Catalogue[i].Name<<endl;
+    }
+}
+
+int PrintEventList(CatalogueData *Catalogue)
+{
+    if(Catalogue->Total==0)
+    {
+        cout<<"该列表没有事项"<<endl;
+        return 0;
+    }
+    
+    for(int i=0;i<Catalogue->Total;i++)
+    {
+        cout<<i+1<<"."<<Catalogue->EventIndex[i]->Title<<endl;
+    }
+    return 1;
+}
+
+void PrintEvent(EventData *Event)
+{
+    cout<<"标题:"<<Event->Title<<endl;
+    cout<<"内容"<<Event->Detail<<endl;
+    if(Event->Type==0)  //待修改，为测试现有程序type==0， 0应该为1
+    {
+        //待修改:将时间由int转换为string 输出"x年x月x日"
+        cout<<"开始时间："<<Event->Begin<<endl;
+        cout<<"结束时间:"<<Event->End<<endl;
+    }
+    else if(Event->Type==2)
+    {
+        cout<<"完成日期:"<<Event->End<<endl;
+    }
+}
+
+int CreatOneEvent(CatalogueData *Catalogue)
+{
+    if(Catalogue->Total<10)
+    {
+        EventData *Event=new EventData;
+        
+        int type=0;
+        char title[100];
+        char detail[500];
+        int begin=0;
+        int end=0;
+        
+        cin.clear();
+        cin.ignore();
+        
+        cout<<"标题 :";
+        cin.getline(title,100);
+        cout<<"内容 :";
+        cin.getline(detail,500);
+        //待修改:getline(cin,string str),检测str长度是否超出字数限制
+        
+        //待修改
+        cout<<"时间(2017/07/18,则输入20170718)，不输入则设定为今日："<<endl;
+        cout<<"开始时间 :";
+        cin>>begin;
+        cout<<"结束时间 :";
+        cin>>end;
+        //待修改：检测输入是否合法，输入当前系统时间
+        SetEvent(Event, type, title, detail, begin, end);
+        
+        Catalogue->EventIndex[Catalogue->Total]=Event;
+        Catalogue->Total++;
+        
+        return 1;
+    }
+    else
+    {
+        cout<<"error，该分类已满"<<endl;
+    }
+    
+    return 0;
+}
+
+

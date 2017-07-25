@@ -26,4 +26,16 @@ void DisplayEvent(CatalogueData* List,char* Cmd,int* Index);
 
 void AddEvent(CatalogueData* List,char* Cmd,int* Index);
 
+void PrintCatalogueList(CatalogueData *Catalogue,int Number);
+
+int PrintEventList(CatalogueData *Catalogue);
+
+void PrintEvent(EventData *Event);
+
+int CreatOneEvent(CatalogueData *Catalogue);
+
+//void DeleteOneEvent();
+
+//void UpdataOneEvent();
+
 #endif /* Handle_hpp */
