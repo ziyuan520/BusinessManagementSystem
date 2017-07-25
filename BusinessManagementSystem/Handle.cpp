@@ -85,7 +85,8 @@ void DisplayEventList(CatalogueData* List,char* Cmd,int* Index)
     PrintEventList(&List[Index[0]-1]);
     
     if(List[Index[0]-1].Total!=0)
-        cout<<"请输入你要查看的事项编号,\n";
+    {cout<<"请输入你要查看的事项编号,\n";}
+    
     cout<<"(0 后退|-1 添加事项):";
     
     cin>>tmp;
@@ -121,6 +122,7 @@ void DisplayEvent(CatalogueData* List,char* Cmd,int* Index)
     int tmp;
     cout<<"————————————————————"<<endl;
     PrintEvent(List[Index[0]-1].EventIndex[Index[1]-1]);
+    
     cout<<"(0 后退|-1 修改事项|-2 删除事项): ";
     cin>>tmp;
     
