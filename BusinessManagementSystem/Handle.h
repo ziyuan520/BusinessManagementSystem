@@ -18,21 +18,21 @@
 
 void Start();
 
-void DisplayCatalogueList(CatalogueData* List,char* Cmd,int* Index);
+void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex);
 
-void DisplayEventList(CatalogueData* List,char* Cmd,int* Index);
+void DisplayEventList(CatalogueData* List,int* Command,int* MenuIndex);
 
-void DisplayEvent(CatalogueData* List,char* Cmd,int* Index);
+void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex);
 
-void AddEvent(CatalogueData* List,char* Cmd,int* Index);
+void AddEvent(CatalogueData* List,int* Command,int* MenuIndex);
 
 void PrintCatalogueList(CatalogueData *Catalogue,int Number);
 
-int PrintEventList(CatalogueData *Catalogue);
+int  PrintEventList(CatalogueData *Catalogue);
 
 void PrintEvent(EventData *Event);
 
-int CreatOneEvent(CatalogueData *Catalogue);
+int  CreatOneEvent(CatalogueData *Catalogue);
 
 //void DeleteOneEvent();
 

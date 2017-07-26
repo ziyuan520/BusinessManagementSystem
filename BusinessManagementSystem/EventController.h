@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "Data.h"
 
-void SetEvent(EventData *Event,int type,char *title,char *detail,int begin,int end);
+void SetEvent(EventData *Event,int type,string title,string detail,int begin,int end);
 
 //void Updata_Event();
 //void Delete_Event();

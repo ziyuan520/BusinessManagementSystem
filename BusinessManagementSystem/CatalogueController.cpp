@@ -10,13 +10,13 @@
 #include "Data.h"
 
 #include <iostream>
-#include <string.h>
+#include <string>
 
 using namespace std;
 
-void SetCatalogue(CatalogueData *Catalogue,int total,char *name,EventData *Event)
+void SetCatalogue(CatalogueData *Catalogue,int total,string name,EventData *Event)
 {
        Catalogue->Total=total;
-       strcpy(Catalogue->Name,name);
+       Catalogue->Name=name;
        Catalogue->EventIndex[Catalogue->Total]=Event;
 }

@@ -21,34 +21,36 @@ using namespace std;
 void Start()
 {
     CatalogueData List[3];
-    char All_Event[30]="All Event";
-    char Schedule[30]="Schedule";
-    char Finished[30]="Finished";
+    string All_Event="All Event";
+    string Schedule="Schedule";
+    string Finished="Finished";
     
     
     SetCatalogue(&List[0], 0, All_Event, nullptr);
     SetCatalogue(&List[1], 0, Schedule, nullptr);
     SetCatalogue(&List[2], 0, Finished, nullptr);
-  //  cout<<List[2].Name<<endl;
     //待修改：需从数据库中读取Event数据 暂用nullptr代替 
     
-    char Cmd = 'a';
-    int Index[2]={0,0};
+    int Command = 1;
     
-    while(Cmd!='q')
+    int MenuIndex[2]={0,0};
+    //MenuIndex[0] save Catalogue Index
+    //MenuIndex[1] save Event Index
+    
+    while(Command!=0)
     {
-        switch (Cmd)
+        switch (Command)
         {
-            case 'a':DisplayCatalogueList(List,&Cmd,Index);break;
-            case'b':DisplayEventList(List,&Cmd,Index);break;
-            case'c':DisplayEvent(List, &Cmd, Index);break;
-            case'd':AddEvent(List, &Cmd,Index);break;
+            case 1 :DisplayCatalogueList(List,&Command,MenuIndex);break;
+            case 2 :DisplayEventList(List,&Command,MenuIndex);break;
+            case 3 :DisplayEvent(List, &Command, MenuIndex);break;
+            case 4 :AddEvent(List, &Command,MenuIndex);break;
         }
     }
     
 }
 
-void DisplayCatalogueList(CatalogueData* List,char* Cmd,int* Index)
+void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
@@ -60,16 +62,16 @@ void DisplayCatalogueList(CatalogueData* List,char* Cmd,int* Index)
     cin>>tmp;
     if (tmp>=1&&tmp<=3)
     {
-        *Cmd='b';
-        Index[0]=tmp;
+        *Command= 2 ;
+        MenuIndex[0]=tmp;
     }
     else if(tmp==0)
-        *Cmd='q';
+        *Command= 0 ;
     else
     {
         cout<<"输入有误"<<endl;
-        Index[0]=0;
-        //*Cmd='a';
+        MenuIndex[0]=0;
+        //*Cmd=1;
         
         //重置输入流
         cin.clear();
@@ -78,32 +80,32 @@ void DisplayCatalogueList(CatalogueData* List,char* Cmd,int* Index)
     
 }
 
-void DisplayEventList(CatalogueData* List,char* Cmd,int* Index)
+void DisplayEventList(CatalogueData* List,int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
-    cout<<"<"<<List[Index[0]-1].Name<<">"<<endl;
-    PrintEventList(&List[Index[0]-1]);
+    cout<<"<"<<List[MenuIndex[0]-1].Name<<">"<<endl;
+    PrintEventList(&List[MenuIndex[0]-1]);
     
-    if(List[Index[0]-1].Total!=0)
+    if(List[MenuIndex[0]-1].Total!=0)
     cout<<"请输入你要查看的事项编号,\n";
     
     cout<<"(0 后退|-1 添加事项):";
     
     cin>>tmp;
     
-    if(tmp<=List[Index[0]-1].Total&&tmp>=1)
+    if(tmp<=List[MenuIndex[0]-1].Total&&tmp>=1)
     {
-        *Cmd='c';
-        Index[1]=tmp;
+        *Command= 3 ;
+        MenuIndex[1]=tmp;
     }
     else if(tmp==-1)
     {
-        *Cmd='d';
+        *Command= 4 ;
     }
     else if(tmp==0)
     {
-        *Cmd='a';
+        *Command= 1 ;
     }
     else
     {
@@ -115,17 +117,17 @@ void DisplayEventList(CatalogueData* List,char* Cmd,int* Index)
     }
 }
 
-void DisplayEvent(CatalogueData* List,char* Cmd,int* Index)
+void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
-    PrintEvent(List[Index[0]-1].EventIndex[Index[1]-1]);
+    PrintEvent(List[MenuIndex[0]-1].EventIndex[MenuIndex[1]-1]);
     cout<<"(0 后退|-1 修改事项|-2 删除事项): ";
     cin>>tmp;
     
     if(tmp==0)
     {
-        *Cmd='b';
+        *Command=2;
     }
     else if(tmp==-1)
     {
@@ -137,11 +139,11 @@ void DisplayEvent(CatalogueData* List,char* Cmd,int* Index)
     }
 }
 
-void AddEvent(CatalogueData* List,char* Cmd,int* Index)
+void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
-    tmp=CreatOneEvent(&List[Index[0]-1]);
+    tmp=CreatOneEvent(&List[MenuIndex[0]-1]);
     cout<<"————————————————————"<<endl;
     if(tmp==1)
     {
@@ -154,7 +156,7 @@ void AddEvent(CatalogueData* List,char* Cmd,int* Index)
     
     //返回上一级，（事项列表）
     
-    *Cmd='b';
+    *Command=2;
     //(*Index=*Index;)
 }
 
@@ -183,17 +185,17 @@ int PrintEventList(CatalogueData *Catalogue)
 
 void PrintEvent(EventData *Event)
 {
-    cout<<"标题:"<<Event->Title<<endl;
-    cout<<"内容"<<Event->Detail<<endl;
+    cout<<"标题: "<<Event->Title<<endl;
+    cout<<"内容: "<<Event->Detail<<endl;
     if(Event->Type==0)  //待修改，为测试现有程序type==0， 0应该为1
     {
         //待修改:将时间由int转换为string 输出"x年x月x日"
         cout<<"开始时间："<<Event->Begin<<endl;
-        cout<<"结束时间:"<<Event->End<<endl;
+        cout<<"结束时间: "<<Event->End<<endl;
     }
     else if(Event->Type==2)
     {
-        cout<<"完成日期:"<<Event->End<<endl;
+        cout<<"完成日期: "<<Event->End<<endl;
     }
 }
 
@@ -204,25 +206,25 @@ int CreatOneEvent(CatalogueData *Catalogue)
         EventData *Event=new EventData;
         
         int type=0;
-        char title[100];
-        char detail[500];
+        string title;
+        string detail;
         int begin=0;
         int end=0;
         
         cin.clear();
         cin.ignore();
         
-        cout<<"标题 :";
-        cin.getline(title,100);
-        cout<<"内容 :";
-        cin.getline(detail,500);
+        cout<<"标题: ";
+        getline(cin,title);
+        cout<<"内容: ";
+        getline(cin,detail);
         //待修改:getline(cin,string str),检测str长度是否超出字数限制
         
         //待修改
         cout<<"时间(2017/07/18,则输入20170718)，不输入则设定为今日："<<endl;
-        cout<<"开始时间 :";
+        cout<<"开始时间: ";
         cin>>begin;
-        cout<<"结束时间 :";
+        cout<<"结束时间: ";
         cin>>end;
         //待修改：检测输入是否合法，输入当前系统时间
         SetEvent(Event, type, title, detail, begin, end);

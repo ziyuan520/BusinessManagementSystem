@@ -10,15 +10,15 @@
 #include "Data.h"
 
 #include <iostream>
-#include <string.h>
+#include <string>
 
 using namespace std;
 
-void SetEvent(EventData *Event,int type,char *title,char *detail,int begin,int end)
+void SetEvent(EventData *Event,int type,string title,string detail,int begin,int end)
 {
     Event->Type=type;
-    strcpy(Event->Title,title);
-    strcpy(Event->Detail,detail);
+    Event->Title=title;
+    Event->Detail=detail;
     Event->Begin=begin;
     Event->End=end;
 }

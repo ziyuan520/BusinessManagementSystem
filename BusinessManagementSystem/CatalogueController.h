@@ -9,12 +9,10 @@
 #ifndef CatalogueController_h
 #define CatalogueController_h
 
-#include <stdio.h>
+
 #include "Data.h"
 
-
-
-void SetCatalogue(CatalogueData *Catalogue,int total,char *name,EventData *Event);
+void SetCatalogue(CatalogueData *Catalogue,int total,string name,EventData *Event);
 
 //void Updata_Catalogue();
 //void Delete_Catalogue();
