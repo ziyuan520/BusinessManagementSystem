@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -21,4 +22,21 @@ void SetEvent(EventData *Event,int type,string title,string detail,int begin,int
     Event->Detail=detail;
     Event->Begin=begin;
     Event->End=end;
+}
+
+string FormatTime(int Time)
+{
+    
+    int Year,Month,Day;
+   
+    string Date;
+
+    
+    Year=Time/10000;
+    Month=Time/100-Year*100;
+    Day=Time-Year*10000-Month*100;
+    
+    Date=to_string(Year)+"年"+to_string(Month)+"月"+to_string(Day)+"日";
+    
+    return Date;
 }

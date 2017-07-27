@@ -29,7 +29,7 @@ void Start()
     SetCatalogue(&List[0], 0, All_Event, nullptr);
     SetCatalogue(&List[1], 0, Schedule, nullptr);
     SetCatalogue(&List[2], 0, Finished, nullptr);
-    //待修改：需从数据库中读取Event数据 暂用nullptr代替 
+    //incomplete：需从数据库中读取Event数据 暂用nullptr代替 
     
     int Command = 1;
     
@@ -137,6 +137,14 @@ void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex)
     {
         cout<<"该功能尚未完成"<<endl;
     }
+    else
+    {
+        cout<<"输入有误,请重新输入:"<<endl;
+        
+        //重置输入流
+        cin.clear();
+        cin.ignore();
+    }
 }
 
 void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
@@ -148,16 +156,18 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
     if(tmp==1)
     {
         cout<<"添加成功！"<<endl;
+        
+        //Display this new Event
+        *Command=3;
+        MenuIndex[1]=List[MenuIndex[0]-1].Total;
     }
     else
     {
         cout<<"添加失败。"<<endl;
+        
+        //Come back to Event List
+        *Command=2;
     }
-    
-    //返回上一级，（事项列表）
-    
-    *Command=2;
-    //(*Index=*Index;)
 }
 
 void PrintCatalogueList(CatalogueData *Catalogue,int Number)
@@ -187,16 +197,31 @@ void PrintEvent(EventData *Event)
 {
     cout<<"标题: "<<Event->Title<<endl;
     cout<<"内容: "<<Event->Detail<<endl;
-    if(Event->Type==0)  //待修改，为测试现有程序type==0， 0应该为1
+    
+    if(Event->Begin!=0)
     {
-        //待修改:将时间由int转换为string 输出"x年x月x日"
-        cout<<"开始时间："<<Event->Begin<<endl;
-        cout<<"结束时间: "<<Event->End<<endl;
+        string BeginDate;
+        
+        BeginDate=FormatTime(Event->Begin); //formattiing,for print "****年**月**日"
+        
+        cout<<"开始时间："<<BeginDate<<endl;
     }
-    else if(Event->Type==2)
+
+    if(Event->End!=0)
+    {
+        string EndDate;
+        
+        EndDate=FormatTime(Event->End);
+        
+        cout<<"结束时间: "<<EndDate<<endl;
+    }
+
+    
+    else if(Event->Type==2)//incomplete;unused module
     {
         cout<<"完成日期: "<<Event->End<<endl;
     }
+
 }
 
 int CreatOneEvent(CatalogueData *Catalogue)
@@ -218,15 +243,14 @@ int CreatOneEvent(CatalogueData *Catalogue)
         getline(cin,title);
         cout<<"内容: ";
         getline(cin,detail);
-        //待修改:getline(cin,string str),检测str长度是否超出字数限制
         
-        //待修改
+        //incomplete:the [condition] to cin the Begin and End
         cout<<"时间(2017/07/18,则输入20170718)，不输入则设定为今日："<<endl;
         cout<<"开始时间: ";
         cin>>begin;
         cout<<"结束时间: ";
         cin>>end;
-        //待修改：检测输入是否合法，输入当前系统时间
+        //incomplete：检测输入是否合法，加入当前系统时间
         SetEvent(Event, type, title, detail, begin, end);
         
         Catalogue->EventIndex[Catalogue->Total]=Event;
