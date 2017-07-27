@@ -16,6 +16,7 @@ void SetEvent(EventData *Event,int type,string title,string detail,int begin,int
 
 string FormatTime(int Time);
 
+
 //void Updata_Event();
 //void Delete_Event();
 
