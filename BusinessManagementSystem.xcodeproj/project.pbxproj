@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D72F5E51F2C81CD00E678EF /* Database_controll_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5DF1F2C81CD00E678EF /* Database_controll_API.cpp */; };
+		0D72F5E61F2C81CD00E678EF /* Datebase_Test_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5E11F2C81CD00E678EF /* Datebase_Test_API.cpp */; };
+		0D72F5E71F2C81CD00E678EF /* Test_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5E31F2C81CD00E678EF /* Test_option.cpp */; };
+		0D72F5EA1F2C839C00E678EF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */; };
 		0DEFD5371F263AE20037E5FE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52D1F263AE20037E5FE /* main.cpp */; };
 		0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52F1F263AE20037E5FE /* Handle.cpp */; };
 		0DEFD5391F263AE20037E5FE /* EventController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5311F263AE20037E5FE /* EventController.cpp */; };
@@ -27,6 +31,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D72F5DF1F2C81CD00E678EF /* Database_controll_API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Database_controll_API.cpp; sourceTree = "<group>"; };
+		0D72F5E01F2C81CD00E678EF /* Database_controll_API.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Database_controll_API.hpp; sourceTree = "<group>"; };
+		0D72F5E11F2C81CD00E678EF /* Datebase_Test_API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Datebase_Test_API.cpp; sourceTree = "<group>"; };
+		0D72F5E21F2C81CD00E678EF /* Datebase_Test_API.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Datebase_Test_API.hpp; sourceTree = "<group>"; };
+		0D72F5E31F2C81CD00E678EF /* Test_option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test_option.cpp; sourceTree = "<group>"; };
+		0D72F5E41F2C81CD00E678EF /* Test_option.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test_option.hpp; sourceTree = "<group>"; };
+		0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0DEFD5101F249F110037E5FE /* BusinessManagementSystem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusinessManagementSystem; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DEFD52D1F263AE20037E5FE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0DEFD52E1F263AE20037E5FE /* Handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handle.h; sourceTree = "<group>"; };
@@ -45,17 +56,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D72F5EA1F2C839C00E678EF /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D72F5E81F2C839C00E678EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0DEFD5071F249F110037E5FE = {
 			isa = PBXGroup;
 			children = (
 				0DEFD5121F249F110037E5FE /* BusinessManagementSystem */,
 				0DEFD5111F249F110037E5FE /* Products */,
+				0D72F5E81F2C839C00E678EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +91,12 @@
 		0DEFD5121F249F110037E5FE /* BusinessManagementSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0D72F5DF1F2C81CD00E678EF /* Database_controll_API.cpp */,
+				0D72F5E01F2C81CD00E678EF /* Database_controll_API.hpp */,
+				0D72F5E11F2C81CD00E678EF /* Datebase_Test_API.cpp */,
+				0D72F5E21F2C81CD00E678EF /* Datebase_Test_API.hpp */,
+				0D72F5E31F2C81CD00E678EF /* Test_option.cpp */,
+				0D72F5E41F2C81CD00E678EF /* Test_option.hpp */,
 				0DEFD5321F263AE20037E5FE /* Data.h */,
 				0DEFD5301F263AE20037E5FE /* EventController.h */,
 				0DEFD5311F263AE20037E5FE /* EventController.cpp */,
@@ -141,8 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D72F5E71F2C81CD00E678EF /* Test_option.cpp in Sources */,
+				0D72F5E51F2C81CD00E678EF /* Database_controll_API.cpp in Sources */,
 				0DEFD5391F263AE20037E5FE /* EventController.cpp in Sources */,
 				0DEFD53B1F263AE20037E5FE /* CatalogueController.cpp in Sources */,
+				0D72F5E61F2C81CD00E678EF /* Datebase_Test_API.cpp in Sources */,
 				0DEFD5371F263AE20037E5FE /* main.cpp in Sources */,
 				0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */,
 				0DEFD53A1F263AE20037E5FE /* Controller.cpp in Sources */,
