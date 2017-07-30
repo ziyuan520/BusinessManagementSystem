@@ -197,7 +197,7 @@ void PrintEvent(EventData *Event)
 {
     cout<<"标题: "<<Event->Title<<endl;
     cout<<"内容: "<<Event->Detail<<endl;
-    
+/*
     if(Event->Begin!=0)
     {
         string BeginDate;
@@ -221,7 +221,7 @@ void PrintEvent(EventData *Event)
     {
         cout<<"完成日期: "<<Event->End<<endl;
     }
-
+*/
 }
 
 int CreatOneEvent(CatalogueData *Catalogue)

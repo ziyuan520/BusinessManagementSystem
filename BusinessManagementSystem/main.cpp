@@ -25,8 +25,8 @@ char *err_msg;
 
 int main(int argc, const char * argv[])
 {
-    EventData Event={0,"这是标题","这是内容",20151231,20171231};
-    EventData Event2={0,"这是标题2","这是内容2",20150606,20170923};
+    EventData Event={0,"这是标题","这是内容","20151231","20171231"};
+    EventData Event2={0,"这是标题2","这是内容2","20150606","20170923"};
     CatalogueData Catalogue={0,0,"今日代办",};
     
     Initialize_DataBase(Database, err_msg);
@@ -36,7 +36,9 @@ int main(int argc, const char * argv[])
     Set_To_DataBase(Database, err_msg, &Catalogue, &Event2);
     cout<<"-------------------"<<endl;
     Get_EventList_From_DataBase(Database, err_msg, &Catalogue);
+    cout<<"-------事项内容---------"<<endl;
+    Get_Event_From_DataBase(Database, err_msg, &Catalogue, 1);
     cout<<"-------------------"<<endl;
-    Displaytable_Call_Test_AllData(Database, err_msg);
+    Displaytable_Test_AllData(Database, err_msg);
     return 0;
 }

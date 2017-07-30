@@ -18,12 +18,15 @@ using namespace std;
 
 string Format_int_To_string(int Integer);
 
+string Format_select_Sentence(string Column);
+
 void Initialize_DataBase(sqlite3 *Database, char *err_msg);
 
 void Set_To_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue,EventData *Event);
 
 void Get_EventList_From_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue);
 
+void Get_Event_From_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue,int EventIndex);
 
 #endif /* Controller_hpp */
 

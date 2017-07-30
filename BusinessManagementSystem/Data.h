@@ -17,8 +17,8 @@ struct EventData{
     int Type;
     string Title;
     string Detail;
-    int Begin;
-    int End;
+    string Begin;
+    string End;
 };
 
 struct CatalogueData{
