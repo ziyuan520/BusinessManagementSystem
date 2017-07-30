@@ -12,13 +12,23 @@
 #include <stdio.h>
 #import "sqlite3.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch_lean_1
 void CreateTable_Test(sqlite3 *Database, char *err_msg);
 void Insert_Test(sqlite3 *Database, char *err_msg);
 void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg);
 
+<<<<<<< HEAD
 void CreateTable_Call_Test(sqlite3 *Database, char *err_msg);
 void Insert_Call_Test(sqlite3 *Database, char *err_msg);
 void Displaytable_Call_Test_AllData(sqlite3 *Database, char *err_msg);
+=======
+void CreateTable_Default_Call_Test(sqlite3 *Database, char *err_msg);
+void Insert_Default_Call_Test(sqlite3 *Database, char *err_msg);
+void Displaytable_Default_Call_Test_AllData(sqlite3 *Database, char *err_msg);
+>>>>>>> branch_lean_1
 
 void CreateTable_Enter_Call_Test(sqlite3 *Database, char *err_msg);
 void Insert_Enter_Call_Test(sqlite3 *Database, char *err_msg);

@@ -9,17 +9,22 @@
 #ifndef Data_h
 #define Data_h
 
+#include<string>
+
+using namespace std;
+
 struct EventData{
     int Type;
-    char Title[100];
-    char Detail[500];
-    int Begin;
-    int End;
+    string Title;
+    string Detail;
+    string Begin;
+    string End;
 };
 
 struct CatalogueData{
+    int CatalogueIndex;
     int Total;
-    char Name[30];
+    string Name;
     EventData *EventIndex[10];  //每个分类下最大10个事项，
 };
 

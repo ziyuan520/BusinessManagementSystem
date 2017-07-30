@@ -14,6 +14,7 @@
 #include <iostream>
 using namespace std;
 
+<<<<<<< HEAD
 inline void OpenDataBase(sqlite3 *Database, char *err_msg){if(sqlite3_open("test.db", &Database) != SQLITE_OK)
 {
     printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
@@ -32,6 +33,26 @@ inline void CloseDataBase(sqlite3 *Database, char *err_msg){ if (sqlite3_close(D
 int sqlite3_exec_callback(void *data, int nColumn,char **colValues, char **colNames);
 
 int sqlite3_exec_callback_checkexsit(void *data, int nColumn, char **colValues, char **colNames);
+=======
+//inline void OpenDataBase(sqlite3 *Database, char *err_msg){if(sqlite3_open("test.db", &Database) != SQLITE_OK)
+//{
+//    printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
+//    exit(-1);
+//}
+//else printf("打开数据库成功！\n");
+//}
+//
+//inline void CloseDataBase(sqlite3 *Database, char *err_msg){ if (sqlite3_close(Database) != SQLITE_OK)
+//{
+//    printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
+//    exit(-1);
+//}
+//    else printf("关闭数据库成功！\n");}
+
+int sqlite3_exec_callback(void *data, int nColumn,char **colValues, char **colNames);
+
+//int sqlite3_exec_callback_checkexsit(void *data, int nColumn, char **colValues, char **colNames);
+>>>>>>> branch_lean_1
 
 int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
@@ -39,6 +60,7 @@ int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
 
 
+<<<<<<< HEAD
 void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql);
 
 
@@ -46,5 +68,15 @@ void Sql_Manual(sqlite3 *Database, char *err_msg,char *sql);
 
 
 void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql);
+=======
+void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql);
+
+
+void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);
+
+
+void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);
+
+>>>>>>> branch_lean_1
 
 #endif /* Database_controll_API_hpp */
