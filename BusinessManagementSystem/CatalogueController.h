@@ -12,7 +12,7 @@
 
 #include "Data.h"
 
-void SetCatalogue(CatalogueData *Catalogue,int total,string name,EventData *Event);
+void SetCatalogue(CatalogueData *Catalogue,int catalogueIndex,int total,string name,EventData *Event);
 
 //void Updata_Catalogue();
 //void Delete_Catalogue();

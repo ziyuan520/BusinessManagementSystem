@@ -22,6 +22,7 @@ struct EventData{
 };
 
 struct CatalogueData{
+    int CatalogueIndex;
     int Total;
     string Name;
     EventData *EventIndex[10];  //每个分类下最大10个事项，

@@ -19,7 +19,7 @@ void CreateTable_Test(sqlite3 *Database, char *err_msg){
     }
     else printf("打开数据库成功！\n");
     
-    char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Title text,Catalogue text,State integer,Start_Time text,End_Time text)";
+    char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Catalogue_Index integer,Event_Index integer,Title text,Detail text,State integer,Start_Time integer,End_Time integer)";
     char Sql_Delete[100]= "drop table event";
     
     if (sqlite3_exec(Database, Sql_Delete, NULL, NULL, &err_msg) != SQLITE_OK) {
@@ -90,7 +90,7 @@ void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg){
 }
 
 void CreateTable_Call_Test(sqlite3 *Database, char *err_msg){
-    char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Title text,Catalogue text,State integer,Start_Time text,End_Time text)";
+    char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Catalogue_Index integer,Event_Index integer,Title text,Detail text,State integer,Start_Time integer,End_Time integer)";
     CreateTable_Manual(Database, err_msg, Sql_Create_Buffer);
 }
 
@@ -112,6 +112,7 @@ void CreateTable_Enter_Call_Test(sqlite3 *Database, char *err_msg){
 void Insert_Enter_Call_Test(sqlite3 *Database, char *err_msg){
     Sql_Manual(Database, err_msg, nullptr);
 }
+
 void Displaytable_Enter_Call_Test_AllData(sqlite3 *Database, char *err_msg){
     Displaytable_Manual(Database, err_msg, nullptr);
 }

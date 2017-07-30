@@ -8,7 +8,7 @@
 
 #include "Handle.h"
 #include "Data.h"
-#include "Controller.h"
+
 #include "EventController.h"
 #include "CatalogueController.h"
 
@@ -26,9 +26,9 @@ void Start()
     string Finished="Finished";
     
     
-    SetCatalogue(&List[0], 0, All_Event, nullptr);
-    SetCatalogue(&List[1], 0, Schedule, nullptr);
-    SetCatalogue(&List[2], 0, Finished, nullptr);
+    SetCatalogue(&List[0],0,0, All_Event, nullptr);
+    SetCatalogue(&List[1],1,0, Schedule, nullptr);
+    SetCatalogue(&List[2],2,0, Finished, nullptr);
     //incomplete：需从数据库中读取Event数据 暂用nullptr代替 
     
     int Command = 1;
@@ -253,6 +253,8 @@ int CreatOneEvent(CatalogueData *Catalogue)
         //incomplete：检测输入是否合法，加入当前系统时间
         SetEvent(Event, type, title, detail, begin, end);
         
+        //写入数据库
+        //再读取数据库
         Catalogue->EventIndex[Catalogue->Total]=Event;
         Catalogue->Total++;
         

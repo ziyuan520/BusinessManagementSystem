@@ -10,11 +10,11 @@
 		0D72F5E51F2C81CD00E678EF /* Database_controll_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5DF1F2C81CD00E678EF /* Database_controll_API.cpp */; };
 		0D72F5E61F2C81CD00E678EF /* Datebase_Test_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5E11F2C81CD00E678EF /* Datebase_Test_API.cpp */; };
 		0D72F5E71F2C81CD00E678EF /* Test_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5E31F2C81CD00E678EF /* Test_option.cpp */; };
-		0D72F5EA1F2C839C00E678EF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */; };
+		0D72F6231F2D11EA00E678EF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */; };
+		0D72F6301F2D16D500E678EF /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F62E1F2D16D500E678EF /* Controller.cpp */; };
 		0DEFD5371F263AE20037E5FE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52D1F263AE20037E5FE /* main.cpp */; };
 		0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52F1F263AE20037E5FE /* Handle.cpp */; };
 		0DEFD5391F263AE20037E5FE /* EventController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5311F263AE20037E5FE /* EventController.cpp */; };
-		0DEFD53A1F263AE20037E5FE /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5341F263AE20037E5FE /* Controller.cpp */; };
 		0DEFD53B1F263AE20037E5FE /* CatalogueController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +38,9 @@
 		0D72F5E31F2C81CD00E678EF /* Test_option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test_option.cpp; sourceTree = "<group>"; };
 		0D72F5E41F2C81CD00E678EF /* Test_option.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test_option.hpp; sourceTree = "<group>"; };
 		0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0D72F6201F2CF56600E678EF /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		0D72F62E1F2D16D500E678EF /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
+		0D72F62F1F2D16D500E678EF /* Controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
 		0DEFD5101F249F110037E5FE /* BusinessManagementSystem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusinessManagementSystem; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DEFD52D1F263AE20037E5FE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0DEFD52E1F263AE20037E5FE /* Handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handle.h; sourceTree = "<group>"; };
@@ -45,8 +48,6 @@
 		0DEFD5301F263AE20037E5FE /* EventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventController.h; sourceTree = "<group>"; };
 		0DEFD5311F263AE20037E5FE /* EventController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventController.cpp; sourceTree = "<group>"; };
 		0DEFD5321F263AE20037E5FE /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
-		0DEFD5331F263AE20037E5FE /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		0DEFD5341F263AE20037E5FE /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		0DEFD5351F263AE20037E5FE /* CatalogueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogueController.h; sourceTree = "<group>"; };
 		0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CatalogueController.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D72F5EA1F2C839C00E678EF /* libsqlite3.tbd in Frameworks */,
+				0D72F6231F2D11EA00E678EF /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,11 +103,12 @@
 				0DEFD5311F263AE20037E5FE /* EventController.cpp */,
 				0DEFD5351F263AE20037E5FE /* CatalogueController.h */,
 				0DEFD5361F263AE20037E5FE /* CatalogueController.cpp */,
-				0DEFD5331F263AE20037E5FE /* Controller.h */,
-				0DEFD5341F263AE20037E5FE /* Controller.cpp */,
 				0DEFD52E1F263AE20037E5FE /* Handle.h */,
 				0DEFD52F1F263AE20037E5FE /* Handle.cpp */,
+				0D72F6201F2CF56600E678EF /* File */,
 				0DEFD52D1F263AE20037E5FE /* main.cpp */,
+				0D72F62E1F2D16D500E678EF /* Controller.cpp */,
+				0D72F62F1F2D16D500E678EF /* Controller.hpp */,
 			);
 			path = BusinessManagementSystem;
 			sourceTree = "<group>";
@@ -171,11 +173,11 @@
 				0D72F5E71F2C81CD00E678EF /* Test_option.cpp in Sources */,
 				0D72F5E51F2C81CD00E678EF /* Database_controll_API.cpp in Sources */,
 				0DEFD5391F263AE20037E5FE /* EventController.cpp in Sources */,
+				0D72F6301F2D16D500E678EF /* Controller.cpp in Sources */,
 				0DEFD53B1F263AE20037E5FE /* CatalogueController.cpp in Sources */,
 				0D72F5E61F2C81CD00E678EF /* Datebase_Test_API.cpp in Sources */,
 				0DEFD5371F263AE20037E5FE /* main.cpp in Sources */,
 				0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */,
-				0DEFD53A1F263AE20037E5FE /* Controller.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
