@@ -15,7 +15,7 @@
 
 using namespace std;
 
-void SetEvent(EventData *Event,int type,string title,string detail,int begin,int end)
+void SetEvent(EventData *Event,int type,string title,string detail,string begin,string end)
 {
     Event->Type=type;
     Event->Title=title;

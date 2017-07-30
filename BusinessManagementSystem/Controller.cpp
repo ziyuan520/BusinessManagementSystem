@@ -19,10 +19,12 @@
 
 using namespace std;
 
+sqlite3 *Database=nullptr;
+char *err_msg=nullptr;
 
 
 
-void Initialize_DataBase(sqlite3 *Database, char *err_msg)
+void Initialize_DataBase()
 {
     
     Test_Option *Test_Option_Instance=new Test_Option;
@@ -35,7 +37,7 @@ void Initialize_DataBase(sqlite3 *Database, char *err_msg)
 }
 
 
-void Set_To_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue,EventData *Event)
+void Set_To_DataBase(CatalogueData *Catalogue,EventData *Event)
 {
     //"insert into event values (Key,0,0,'事件名','事件内容',0,20170727,20170727)"
     //"create table event(Id integer primary key,Catalogue_Index integer,Event_Index integer,Title text,Detail text,State integer,Start_Time text,End_Time text)";
@@ -72,7 +74,7 @@ void Set_To_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue,E
 
 
 
-void Get_EventList_From_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue)
+void Get_EventList_From_DataBase(CatalogueData *Catalogue)
 {
     //select Title from event where Catalogue_Index = \Catalogue->CatalogueIndex\;
    
@@ -89,7 +91,7 @@ void Get_EventList_From_DataBase(sqlite3 *Database, char *err_msg,CatalogueData 
     delete[] Sqlite_Sentence;
 }
 
-void Get_Event_From_DataBase(sqlite3 *Database, char *err_msg,CatalogueData *Catalogue,int EventIndex)
+void Get_Event_From_DataBase(CatalogueData *Catalogue,int EventIndex)
 {
     //标题 内容 开始时间 结束时间
     //select \Column\ from event where Catalogue_Index = \Catalogue->CatalogueIndex\ and Event_Index=\EnentIndex\;

@@ -30,7 +30,7 @@ void PrintCatalogueList(CatalogueData *Catalogue,int Number);
 
 int  PrintEventList(CatalogueData *Catalogue);
 
-void PrintEvent(EventData *Event);
+void PrintEvent(CatalogueData *Catalogue,int EventIndex);
 
 int  CreatOneEvent(CatalogueData *Catalogue);
 

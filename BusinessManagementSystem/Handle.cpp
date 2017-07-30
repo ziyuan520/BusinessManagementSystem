@@ -11,6 +11,7 @@
 
 #include "EventController.h"
 #include "CatalogueController.h"
+#include "Controller.hpp"
 
 #include <iostream>
 #include <string.h>
@@ -25,11 +26,13 @@ void Start()
     string Schedule="Schedule";
     string Finished="Finished";
     
-    
     SetCatalogue(&List[0],0,0, All_Event, nullptr);
     SetCatalogue(&List[1],1,0, Schedule, nullptr);
     SetCatalogue(&List[2],2,0, Finished, nullptr);
-    //incomplete：需从数据库中读取Event数据 暂用nullptr代替 
+
+    
+    Initialize_DataBase();
+    //incomplete：缺少判断条件，若table已存在则不创建新表
     
     int Command = 1;
     
@@ -121,7 +124,8 @@ void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
-    PrintEvent(List[MenuIndex[0]-1].EventIndex[MenuIndex[1]-1]);
+    PrintEvent(&List[MenuIndex[0]-1], MenuIndex[1]);
+    //PrintEvent(List[MenuIndex[0]-1].EventIndex[MenuIndex[1]-1]);
     cout<<"(0 后退|-1 修改事项|-2 删除事项): ";
     cin>>tmp;
     
@@ -180,24 +184,31 @@ void PrintCatalogueList(CatalogueData *Catalogue,int Number)
 
 int PrintEventList(CatalogueData *Catalogue)
 {
+    Get_EventList_From_DataBase(Catalogue);
+    
+    //以下功能不可用
+    /*
     if(Catalogue->Total==0)
     {
         cout<<"该列表没有事项"<<endl;
         return 0;
     }
-    
+
     for(int i=0;i<Catalogue->Total;i++)
     {
         cout<<i+1<<"."<<Catalogue->EventIndex[i]->Title<<endl;
     }
+         */
     return 1;
 }
 
-void PrintEvent(EventData *Event)
+void PrintEvent(CatalogueData *Catalogue,int EventIndex)
 {
+    Get_Event_From_DataBase(Catalogue, EventIndex);
+/*
     cout<<"标题: "<<Event->Title<<endl;
     cout<<"内容: "<<Event->Detail<<endl;
-/*
+
     if(Event->Begin!=0)
     {
         string BeginDate;
@@ -233,8 +244,8 @@ int CreatOneEvent(CatalogueData *Catalogue)
         int type=0;
         string title;
         string detail;
-        int begin=0;
-        int end=0;
+        int begin;
+        int end;
         
         cin.clear();
         cin.ignore();
@@ -251,11 +262,12 @@ int CreatOneEvent(CatalogueData *Catalogue)
         cout<<"结束时间: ";
         cin>>end;
         //incomplete：检测输入是否合法，加入当前系统时间
-        SetEvent(Event, type, title, detail, begin, end);
+        SetEvent(Event, type, title, detail, Format_int_To_string(begin), Format_int_To_string(end));
         
         //写入数据库
-        //再读取数据库
-        Catalogue->EventIndex[Catalogue->Total]=Event;
+        Set_To_DataBase(Catalogue, Event);
+
+    //该功能不可用    Catalogue->EventIndex[Catalogue->Total]=Event;
         Catalogue->Total++;
         
         return 1;
