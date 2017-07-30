@@ -66,14 +66,14 @@ void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
     if (tmp>=1&&tmp<=3)
     {
         *Command= 2 ;
-        MenuIndex[0]=tmp;
+        MenuIndex[0] = tmp;
     }
     else if(tmp==0)
-        *Command= 0 ;
+        *Command = 0 ;
     else
     {
         cout<<"输入有误"<<endl;
-        MenuIndex[0]=0;
+        MenuIndex[0] = 0;
         //*Cmd=1;
         
         //重置输入流
