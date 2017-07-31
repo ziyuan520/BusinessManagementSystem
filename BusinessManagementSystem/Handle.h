@@ -13,7 +13,7 @@
 #include "Handle.h"
 #include "Data.h"
 
-#include "EventController.h"
+
 #include "CatalogueController.h"
 
 void Start();
@@ -27,10 +27,6 @@ void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex);
 void AddEvent(CatalogueData* List,int* Command,int* MenuIndex);
 
 void PrintCatalogueList(CatalogueData *Catalogue,int Number);
-
-int  PrintEventList(CatalogueData *Catalogue);
-
-void PrintEvent(CatalogueData *Catalogue,int EventIndex);
 
 int  CreatOneEvent(CatalogueData *Catalogue);
 

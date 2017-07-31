@@ -37,7 +37,7 @@ void Initialize_DataBase()
 }
 
 
-void Set_To_DataBase(CatalogueData *Catalogue,EventData *Event)
+void Set_To_DataBase(CatalogueData *Catalogue,int type,string title,string detail,string begin,string end)
 {
     //"insert into event values (Key,0,0,'事件名','事件内容',0,20170727,20170727)"
     //"create table event(Id integer primary key,Catalogue_Index integer,Event_Index integer,Title text,Detail text,State integer,Start_Time text,End_Time text)";
@@ -52,21 +52,22 @@ void Set_To_DataBase(CatalogueData *Catalogue,EventData *Event)
     Sqlite_Insert_Buffer+=",";
     Sqlite_Insert_Buffer+=Format_int_To_string(Catalogue->Total+1);
     Sqlite_Insert_Buffer+=",'";
-    Sqlite_Insert_Buffer+=Event->Title;
+    Sqlite_Insert_Buffer+=title;
     Sqlite_Insert_Buffer+="','";
-    Sqlite_Insert_Buffer+=Event->Detail;
+    Sqlite_Insert_Buffer+=detail;
     Sqlite_Insert_Buffer+="',";
-    Sqlite_Insert_Buffer+=Format_int_To_string(Event->Type);
+    Sqlite_Insert_Buffer+=Format_int_To_string(type);
     Sqlite_Insert_Buffer+=",'";
-    Sqlite_Insert_Buffer+=Event->Begin;
+    Sqlite_Insert_Buffer+=begin;
     Sqlite_Insert_Buffer+="','";
-    Sqlite_Insert_Buffer+=Event->End;
+    Sqlite_Insert_Buffer+=end;
     Sqlite_Insert_Buffer+="')";
     
     Sqlite_Insert_Buffer.c_str();
-    char *Sqlite_Sentence=new char[sizeof(Event->Title)+sizeof(Event->Detail)+100];
+    char *Sqlite_Sentence=new char[sizeof(title)+sizeof(detail)+100];
     strcpy(Sqlite_Sentence,Sqlite_Insert_Buffer.c_str());
     
+    cout<<Sqlite_Insert_Buffer<<endl;
     Sql_Intelligent_API(Database, err_msg, Sqlite_Sentence);
     
     delete[] Sqlite_Sentence;
@@ -154,7 +155,22 @@ string Format_select_Sentence(string Column)
     return Sqlite_Select_Sentence;
 }
 
-
+string FormatTime(int Time)
+{
+    
+    int Year,Month,Day;
+    
+    string Date;
+    
+    
+    Year=Time/10000;
+    Month=Time/100-Year*100;
+    Day=Time-Year*10000-Month*100;
+    
+    Date=to_string(Year)+"年"+to_string(Month)+"月"+to_string(Day)+"日";
+    
+    return Date;
+}
 
 
 

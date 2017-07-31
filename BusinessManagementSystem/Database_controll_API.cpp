@@ -184,9 +184,9 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         cout<<"sql sentence is"<<Sql_Insert_Buffer<<endl;
     }
     else    {
-//        cout<<"run default sql sentence."<<endl;
+        cout<<"run default sql sentence."<<endl;
         Sql_Insert_Buffer = sql;
-//        cout<<"sql sentence is: "<<Sql_Insert_Buffer<<"."<<endl;
+        cout<<"sql sentence is: "<<Sql_Insert_Buffer<<"."<<endl;
     }
     //
     

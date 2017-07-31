@@ -14,10 +14,9 @@
 
 using namespace std;
 
-void SetCatalogue(CatalogueData *Catalogue,int catalogueIndex,int total,string name,EventData *Event)
+void SetCatalogue(CatalogueData *Catalogue,int catalogueIndex,int total,string name)
 {
        Catalogue->CatalogueIndex=catalogueIndex;
        Catalogue->Total=total;
        Catalogue->Name=name;
-       Catalogue->EventIndex[Catalogue->Total]=Event;
 }

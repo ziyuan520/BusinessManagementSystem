@@ -20,9 +20,11 @@ string Format_int_To_string(int Integer);
 
 string Format_select_Sentence(string Column);
 
+string FormatTime(int Time);
+
 void Initialize_DataBase();
 
-void Set_To_DataBase(CatalogueData *Catalogue,EventData *Event);
+void Set_To_DataBase(CatalogueData *Catalogue,int type,string title,string detail,string begin,string end);
 
 void Get_EventList_From_DataBase(CatalogueData *Catalogue);
 
