@@ -158,7 +158,12 @@ string FormatTime(int Time)
     return Date;
 }
 
-
+void SetCatalogue(CatalogueData *Catalogue,int catalogueIndex,int total,string name)
+{
+    Catalogue->CatalogueIndex=catalogueIndex;
+    Catalogue->Total=total;
+    Catalogue->Name=name;
+}
 
 
 

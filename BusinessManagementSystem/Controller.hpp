@@ -29,7 +29,9 @@ void Get_EventList_From_DataBase(CatalogueData *Catalogue);
 
 void Get_Event_From_DataBase(CatalogueData *Catalogue,int EventIndex);
 
-void Delete_
+void SetCatalogue(CatalogueData *Catalogue,int catalogueIndex,int total,string name);
+
+
 
 #endif /* Controller_hpp */
 

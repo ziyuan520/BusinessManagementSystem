@@ -9,7 +9,6 @@
 #include "Handle.h"
 #include "Data.h"
 
-#include "CatalogueController.h"
 #include "Controller.hpp"
 
 #include <iostream>
