@@ -7,7 +7,6 @@
 //
 
 #include "Database_controll_API.hpp"
-#include "Datebase_Test_API.hpp"
 #include <iostream>
 #import "sqlite3.h"
 using namespace std;
@@ -135,8 +134,10 @@ char *catch_Title_EventName_DisplayALL(char *pointer1,char *pointer2){
     //
 }
 
-void deletePointer(){
-
+void deletePointer(sqlite3 *Database, char *err_msg){
+    delete err_msg;
+    delete Database;
+    
 }
 
 void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
@@ -179,7 +180,8 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         cout<<"sql is :"<<Sql_Create_Buffer<<"."<<endl;
     }
     else    {
-        Sql_Create_Buffer = sql;
+        //Sql_Create_Buffer = sql;
+        strcpy(Sql_Create_Buffer, sql);
         cout<<"sql is :"<<Sql_Create_Buffer<<"."<<endl;
     }
     //
@@ -228,7 +230,7 @@ void Sql_Manual(sqlite3 *Database, char *err_msg,char *sql){
     //
     
     //delete
-    //delete []Sql_Create_Buffer;
+    delete []Sql_Create_Buffer;
     delete []tableName;
     //
     
@@ -272,7 +274,9 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
     }
     else    {
 //        cout<<"run default sql sentence."<<endl;
-        Sql_Insert_Buffer = sql;
+       // Sql_Insert_Buffer = sql;
+        strcpy(Sql_Insert_Buffer, sql);
+        
 //        cout<<"sql sentence is: "<<Sql_Insert_Buffer<<"."<<endl;
     }
     //
@@ -307,7 +311,7 @@ void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql){
     //
     
     //delete
-    //delete []Sql_Insert_Buffer;
+    delete []Sql_Insert_Buffer;
     //
 }
 
@@ -358,7 +362,7 @@ void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         Sql_Display_Buffer = catch_Title_EventName_DisplayALL(itemName, tableName);
         cout<<"Sql_Display_Buffer is :"<<Sql_Display_Buffer<<endl;
     }
-    else    Sql_Display_Buffer = sql;
+    else    strcpy(Sql_Display_Buffer,sql);
 //    cout<<Sql_Display_Buffer<<endl;
     //
     
@@ -368,7 +372,7 @@ void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         cout<<"Operation fail:"<<err_msg;
         exit(-1);
     }
-//    else cout<<"Data display successfully"<<endl;
+//    else cout<<"Data display successfully."<<endl;
     //
     
     //close

@@ -9,8 +9,6 @@
 #include "Handle.h"
 #include "Data.h"
 
-#include "EventController.h"
-#include "CatalogueController.h"
 #include "Controller.hpp"
 
 #include <iostream>
@@ -26,9 +24,9 @@ void Start()
     string Schedule="Schedule";
     string Finished="Finished";
     
-    SetCatalogue(&List[0],0,0, All_Event, nullptr);
-    SetCatalogue(&List[1],1,0, Schedule, nullptr);
-    SetCatalogue(&List[2],2,0, Finished, nullptr);
+    SetCatalogue(&List[0],0,0, All_Event);
+    SetCatalogue(&List[1],1,0, Schedule);
+    SetCatalogue(&List[2],2,0, Finished);
 
     
     Initialize_DataBase();
@@ -66,14 +64,14 @@ void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
     if (tmp>=1&&tmp<=3)
     {
         *Command= 2 ;
-        MenuIndex[0]=tmp;
+        MenuIndex[0] = tmp;
     }
     else if(tmp==0)
-        *Command= 0 ;
+        *Command = 0 ;
     else
     {
         cout<<"输入有误"<<endl;
-        MenuIndex[0]=0;
+        MenuIndex[0] = 0;
         //*Cmd=1;
         
         //重置输入流
@@ -88,7 +86,8 @@ void DisplayEventList(CatalogueData* List,int* Command,int* MenuIndex)
     int tmp;
     cout<<"————————————————————"<<endl;
     cout<<"<"<<List[MenuIndex[0]-1].Name<<">"<<endl;
-    PrintEventList(&List[MenuIndex[0]-1]);
+
+    Get_EventList_From_DataBase(&List[MenuIndex[0]-1]);
     
     if(List[MenuIndex[0]-1].Total!=0)
     cout<<"请输入你要查看的事项编号,\n";
@@ -124,8 +123,8 @@ void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
-    PrintEvent(&List[MenuIndex[0]-1], MenuIndex[1]);
-    //PrintEvent(List[MenuIndex[0]-1].EventIndex[MenuIndex[1]-1]);
+
+    Get_Event_From_DataBase(&List[MenuIndex[0]-1], MenuIndex[1]);
     cout<<"(0 后退|-1 修改事项|-2 删除事项): ";
     cin>>tmp;
     
@@ -182,64 +181,10 @@ void PrintCatalogueList(CatalogueData *Catalogue,int Number)
     }
 }
 
-int PrintEventList(CatalogueData *Catalogue)
-{
-    Get_EventList_From_DataBase(Catalogue);
-    
-    //以下功能不可用
-    /*
-    if(Catalogue->Total==0)
-    {
-        cout<<"该列表没有事项"<<endl;
-        return 0;
-    }
-
-    for(int i=0;i<Catalogue->Total;i++)
-    {
-        cout<<i+1<<"."<<Catalogue->EventIndex[i]->Title<<endl;
-    }
-         */
-    return 1;
-}
-
-void PrintEvent(CatalogueData *Catalogue,int EventIndex)
-{
-    Get_Event_From_DataBase(Catalogue, EventIndex);
-/*
-    cout<<"标题: "<<Event->Title<<endl;
-    cout<<"内容: "<<Event->Detail<<endl;
-
-    if(Event->Begin!=0)
-    {
-        string BeginDate;
-        
-        BeginDate=FormatTime(Event->Begin); //formattiing,for print "****年**月**日"
-        
-        cout<<"开始时间："<<BeginDate<<endl;
-    }
-
-    if(Event->End!=0)
-    {
-        string EndDate;
-        
-        EndDate=FormatTime(Event->End);
-        
-        cout<<"结束时间: "<<EndDate<<endl;
-    }
-
-    
-    else if(Event->Type==2)//incomplete;unused module
-    {
-        cout<<"完成日期: "<<Event->End<<endl;
-    }
-*/
-}
-
 int CreatOneEvent(CatalogueData *Catalogue)
 {
     if(Catalogue->Total<10)
     {
-        EventData *Event=new EventData;
         
         int type=0;
         string title;
@@ -262,12 +207,12 @@ int CreatOneEvent(CatalogueData *Catalogue)
         cout<<"结束时间: ";
         cin>>end;
         //incomplete：检测输入是否合法，加入当前系统时间
-        SetEvent(Event, type, title, detail, Format_int_To_string(begin), Format_int_To_string(end));
+        
+        //SetEvent(Event, type, title, detail, Format_int_To_string(begin), Format_int_To_string(end));
         
         //写入数据库
-        Set_To_DataBase(Catalogue, Event);
-
-    //该功能不可用    Catalogue->EventIndex[Catalogue->Total]=Event;
+        Set_To_DataBase(Catalogue, type, title, detail, FormatTime(begin), FormatTime(end));
+       
         Catalogue->Total++;
         
         return 1;

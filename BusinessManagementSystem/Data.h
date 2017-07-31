@@ -13,19 +13,10 @@
 
 using namespace std;
 
-struct EventData{
-    int Type;
-    string Title;
-    string Detail;
-    string Begin;
-    string End;
-};
-
 struct CatalogueData{
     int CatalogueIndex;
     int Total;
     string Name;
-    EventData *EventIndex[10];  //每个分类下最大10个事项，
 };
 
 #endif /* Data_h */
