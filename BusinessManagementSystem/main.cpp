@@ -10,7 +10,6 @@
 
 #include "Handle.h"
 #include "Data.h"
-#include "Datebase_Test_API.hpp"
 #include "Controller.hpp"
 
 //end test
@@ -27,7 +26,7 @@ int main(int argc, const char * argv[])
     Start();
     
     
-    /*
+    /* 测试Controller用
     EventData Event={0,"这是标题","这是内容","20151231","20171231"};
     EventData Event2={0,"这是标题2","这是内容2","20150606","20170923"};
     CatalogueData Catalogue={0,0,"今日代办",};

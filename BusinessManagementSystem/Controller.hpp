@@ -16,7 +16,6 @@
 using namespace std;
 
 
-string Format_int_To_string(int Integer);
 
 string Format_select_Sentence(string Column);
 
@@ -29,6 +28,8 @@ void Set_To_DataBase(CatalogueData *Catalogue,int type,string title,string detai
 void Get_EventList_From_DataBase(CatalogueData *Catalogue);
 
 void Get_Event_From_DataBase(CatalogueData *Catalogue,int EventIndex);
+
+void Delete_
 
 #endif /* Controller_hpp */
 
