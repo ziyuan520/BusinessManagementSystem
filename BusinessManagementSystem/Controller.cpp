@@ -26,7 +26,7 @@ char *err_msg=nullptr;
 void Initialize_DataBase()
 {
     //if(table未/已经创建)
-    char Sql_Create_Buffer[200]="create table event(Id integer primary key,Catalogue_Index integer,Event_Index integer,Title text,Detail text,State integer,Start_Time text,End_Time text)";
+    char Sql_Create_Buffer[200]="create table event(Id integer primary key,Catalogue integer,Event integer,Title text,Detail text,State integer,Start_Time text,End_Time text)";
     
     createTable_Intelligent_API(Database, err_msg, Sql_Create_Buffer);
     
@@ -75,8 +75,8 @@ void Get_EventList_From_DataBase(CatalogueData *Catalogue)
 {
     //select Title from event where Catalogue_Index = \Catalogue->CatalogueIndex\;
    
-    string Sqlite_Select_Buffer=Format_select_Sentence("Event_Index, Title"); //select Title from event.
-    Sqlite_Select_Buffer+=" where Catalogue_Index = ";
+    string Sqlite_Select_Buffer=Format_select_Sentence("Event, Title"); //select Title from event.
+    Sqlite_Select_Buffer+=" where Catalogue = ";
     Sqlite_Select_Buffer+=to_string(Catalogue->CatalogueIndex);
 
     char* Sqlite_Sentence=new char[100];
@@ -95,9 +95,9 @@ void Get_Event_From_DataBase(CatalogueData *Catalogue,int EventIndex)
     
     string Sqlite_Select_Buffer_Head;
     
-    string Sqlite_Select_Buffer_Tail=" where Catalogue_Index = ";
+    string Sqlite_Select_Buffer_Tail=" where Catalogue = ";
     Sqlite_Select_Buffer_Tail+=to_string(Catalogue->CatalogueIndex);
-    Sqlite_Select_Buffer_Tail+=" and Event_Index = ";
+    Sqlite_Select_Buffer_Tail+=" and Event = ";
     Sqlite_Select_Buffer_Tail+=to_string(EventIndex);
     
     char* Sqlite_Sentence=new char[100];
@@ -131,6 +131,77 @@ void Get_Event_From_DataBase(CatalogueData *Catalogue,int EventIndex)
     Displaytable_Intelligent_API(Database, err_msg, Sqlite_Sentence);
     
     delete[] Sqlite_Sentence;
+}
+
+void Delete_Event_From_Database(CatalogueData *Catalogue,int EventIndex)
+{
+    string Sqlite_Delete_Buffer="delete from event where Catalogue = ";
+    Sqlite_Delete_Buffer+=to_string(Catalogue->CatalogueIndex);
+    Sqlite_Delete_Buffer+=" and Event = ";
+    Sqlite_Delete_Buffer+=to_string(EventIndex);
+    
+    char* Sqlite_Sentence=new char[100];
+    strcpy(Sqlite_Sentence,Sqlite_Delete_Buffer.c_str());
+    
+    Sql_Intelligent_API(Database, err_msg, Sqlite_Sentence);
+    
+    delete[] Sqlite_Sentence;
+}
+
+void Update_Event_From_Database(CatalogueData *Catalogue,int EventIndex,int type,string title,string detail,string begin,string end)
+{
+    //"create table event(Id integer primary key,Catalogue integer,Event integer,Title text,Detail text,State integer,Start_Time text,End_Time text)";
+    //update event set xx=xx
+    string Sqlite_Update_Buffer="update event set ";
+    
+    if(type!=0)
+    {
+        Sqlite_Update_Buffer+="State = ";
+        Sqlite_Update_Buffer+=to_string(type);
+        Sqlite_Update_Buffer+=", ";
+    }
+
+    if(title!="")
+    {
+        Sqlite_Update_Buffer+="Title = '";
+        Sqlite_Update_Buffer+=title;
+        Sqlite_Update_Buffer+="', ";
+    }
+    
+    if(detail!="")
+    {
+        Sqlite_Update_Buffer+="Detail = '";
+        Sqlite_Update_Buffer+=detail;
+        Sqlite_Update_Buffer+="', ";
+    }
+    
+    if(begin!="")
+    {
+        Sqlite_Update_Buffer+="Start_Time = '";
+        Sqlite_Update_Buffer+=begin;
+        Sqlite_Update_Buffer+="', ";
+    }
+    
+    if(end!="")
+    {
+        Sqlite_Update_Buffer+="End_Time = '";
+        Sqlite_Update_Buffer+=end;
+        Sqlite_Update_Buffer+="', ";
+    }
+    
+    //无意义的修改，用于防止sql语句错误。
+    Sqlite_Update_Buffer+="Catalogue = ";
+    Sqlite_Update_Buffer+=to_string(Catalogue->CatalogueIndex);
+    
+    Sqlite_Update_Buffer+=" where Catalogue = ";
+    Sqlite_Update_Buffer+=to_string(Catalogue->CatalogueIndex);
+    Sqlite_Update_Buffer+=" and Event = ";
+    Sqlite_Update_Buffer+=to_string(EventIndex);
+    
+    char *Sqlite_Sentence=new char[sizeof(title)+sizeof(detail)+100];
+    strcpy(Sqlite_Sentence,Sqlite_Update_Buffer.c_str());
+    
+    Sql_Intelligent_API(Database, err_msg, Sqlite_Sentence);
 }
 
 string Format_select_Sentence(string Column)

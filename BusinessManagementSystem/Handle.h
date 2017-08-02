@@ -26,7 +26,9 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex);
 
 void PrintCatalogueList(CatalogueData *Catalogue,int Number);
 
-int  CreatOneEvent(CatalogueData *Catalogue);
+void DeleteEvent(CatalogueData* List,int* Command,int* MenuIndex);
+
+void UpdateEvent(CatalogueData* List,int* Command,int* MenuIndex);
 
 //void DeleteOneEvent();
 
