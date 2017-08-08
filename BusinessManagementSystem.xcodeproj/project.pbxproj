@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0D72F5E51F2C81CD00E678EF /* Database_controll_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F5DF1F2C81CD00E678EF /* Database_controll_API.cpp */; };
 		0D72F6231F2D11EA00E678EF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */; };
-		0D72F6301F2D16D500E678EF /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D72F62E1F2D16D500E678EF /* Controller.cpp */; };
 		0DEFD5371F263AE20037E5FE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52D1F263AE20037E5FE /* main.cpp */; };
 		0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD52F1F263AE20037E5FE /* Handle.cpp */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		0D72F5E01F2C81CD00E678EF /* Database_controll_API.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Database_controll_API.hpp; sourceTree = "<group>"; };
 		0D72F5E91F2C839C00E678EF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0D72F6201F2CF56600E678EF /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
-		0D72F62E1F2D16D500E678EF /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		0D72F62F1F2D16D500E678EF /* Controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
 		0DEFD5101F249F110037E5FE /* BusinessManagementSystem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusinessManagementSystem; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DEFD52D1F263AE20037E5FE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 			children = (
 				0D72F5DF1F2C81CD00E678EF /* Database_controll_API.cpp */,
 				0D72F5E01F2C81CD00E678EF /* Database_controll_API.hpp */,
-				0D72F62E1F2D16D500E678EF /* Controller.cpp */,
 				0D72F62F1F2D16D500E678EF /* Controller.hpp */,
 				0DEFD52F1F263AE20037E5FE /* Handle.cpp */,
 				0DEFD52E1F263AE20037E5FE /* Handle.h */,
@@ -151,7 +148,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D72F5E51F2C81CD00E678EF /* Database_controll_API.cpp in Sources */,
-				0D72F6301F2D16D500E678EF /* Controller.cpp in Sources */,
 				0DEFD5371F263AE20037E5FE /* main.cpp in Sources */,
 				0DEFD5381F263AE20037E5FE /* Handle.cpp in Sources */,
 			);

@@ -20,6 +20,7 @@ int sqlite3_exec_callback(void *data, int nColumn, char **colValues, char **colN
     {
         printf("%s\t", colValues[i]);
     }
+
     printf("\n");
     
     return 0;
@@ -98,7 +99,6 @@ char *catch_Title_EventName_DisplayALL(char *pointer1,char *pointer2){
 void deletePointer(sqlite3 *Database, char *err_msg){
     delete err_msg;
     delete Database;
-    
 }
 
 void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){

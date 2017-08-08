@@ -29,7 +29,7 @@ void Start()
     SetCatalogue(&List[2],2,0, Finished);
 
     
-    Initialize_DataBase();
+    //Initialize_DataBase();
     //incomplete：缺少判断条件，若table已存在则不创建新表
     
     int Command = 1;
@@ -48,7 +48,6 @@ void Start()
             case 4 :AddEvent(List, &Command,MenuIndex);break;
             case 5 :UpdateEvent(List, &Command, MenuIndex);break;
             case 6:DeleteEvent(List, &Command, MenuIndex);break;
-
         }
     }
     
@@ -60,7 +59,13 @@ void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
     cout<<"————————————————————"<<endl;
     cout<<"——欢迎使用事务管理系统——"<<endl;
     cout<<"——————— 列表 ————————"<<endl;
-    PrintCatalogueList(List, 3);
+    /*
+    for(int i=0;i<3;i++)
+    {
+        cout<<i+1<<"."<<List[i].Name<<endl;
+    }
+     */
+    Get_Catalogue_From_DataBase();
     cout<<"————————————————————"<<endl;
     cout<<"请输入你要查看的事务分类编号(0 退出|-1 添加事项):";
     cin>>tmp;
@@ -207,12 +212,11 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
         cin>>end;
         //incomplete：检测输入是否合法，加入当前系统时间
         
-        //SetEvent(Event, type, title, detail, Format_int_To_string(begin), Format_int_To_string(end));
-        
         //写入数据库
         Set_To_DataBase(&List[MenuIndex[0]-1], type, title, detail, FormatTime(begin), FormatTime(end));
-        
+        cout<<List[MenuIndex[0]-1].Total;
         List[MenuIndex[0]-1].Total++;
+        cout<<List[MenuIndex[0]-1].Total;
         
         *Command=3;
         MenuIndex[1]=List[MenuIndex[0]-1].Total;
@@ -222,7 +226,6 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
     
     /*
     cout<<"————————————————————"<<endl;
-    /*
     if(tmp==1)
     {
         cout<<"————————————————————"<<endl;
@@ -241,14 +244,6 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
         *Command=2;
     }
      */
-}
-
-void PrintCatalogueList(CatalogueData *Catalogue,int Number)
-{
-    for(int i=0;i<Number;i++)
-    {
-        cout<<i+1<<"."<<Catalogue[i].Name<<endl;
-    }
 }
 
 void DeleteEvent(CatalogueData* List,int* Command,int* MenuIndex)
