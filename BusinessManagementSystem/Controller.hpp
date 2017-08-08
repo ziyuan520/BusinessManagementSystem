@@ -12,32 +12,34 @@
 #include <stdio.h>
 #include <iostream>
 #include "sqlite3.h"
-#include "Data.h"
+
 using namespace std;
 
 
 void Initialize_DataBase();
 
-void Set_To_DataBase(CatalogueData *Catalogue,int type,string title,string detail,string begin,string end);
+void Set_Event_To_DataBase(int Catalogue,int Total_Event,int type,string title,string detail,string begin,string end);
 
-void Get_Catalogue_From_DataBase();
+//返回 分类总数 or 一个分类下的事件总数
+int Get_Total_Number_From_DataBase(int Type,int Catalogue);
 
-void Get_EventList_From_DataBase(CatalogueData *Catalogue);
+void Get_Catalogue_From_DataBase(int Catalogue);
 
-void Get_Event_From_DataBase(CatalogueData *Catalogue,int EventIndex);
+void Get_EventList_From_DataBase(int Catalogue);
 
-void Delete_Event_From_Database(CatalogueData *Catalogue,int EventIndex);
+void Get_Event_From_DataBase(int Catalogue,int Event_Index);
 
-void Update_Event_From_Database(CatalogueData *Catalogue,int EventIndex,int type,string title,string detail,string begin,string end);
+void Delete_Event_From_Database(int Catalogue,int Event_Index);
 
+void Update_Event_From_Database(int Catalogue,int Event_Index,int type,string title,string detail,string begin,string end);
 
 string Format_select_Sentence(string Column);
 
 string FormatTime(int Time);
 
-void SetCatalogue(CatalogueData *Catalogue,int catalogueIndex,int total,string name);
 
-int Get_Event_Number_From_Database(int CatalogueIndex)
+
+
 
 #endif /* Controller_hpp */
 

@@ -108,7 +108,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
         exit(-1);
     }
-    else printf("打开数据库成功！\n");
+    //else printf("打开数据库成功！\n");
     //
     
     //choose excute sentence
@@ -156,7 +156,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
         exit(-1);
     }
-    else printf("关闭数据库成功！\n");
+    //else printf("关闭数据库成功！\n");
     //
     
     //delete
@@ -267,4 +267,65 @@ void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
     delete []Open_Name;
     //delete []Sql_Display_Buffer;
     //
+}
+
+
+
+
+//coding by lgx 2017.08.08
+
+//返回 Select的数据的行数; 可改写成获取 行数、列数、数据等
+int Get_Row_From_Database(sqlite3 *Database,char* err_msg,char *sql)
+{
+    //select Title from event where Catalogue = \Catalogue->CatalogueIndex\ and Event_Index=\EnentIndex\;
+    char** colResult=nullptr;
+    int nRow;
+    int nColumn;
+    
+    //Redefined:
+    //sqlite3 *Database=nullptr;
+    //char *err_msg=nullptr;
+    
+    if(sqlite3_open("test.db", &Database) != SQLITE_OK)
+    {
+        printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
+        exit(-1);
+    }
+    //else printf("打开数据库成功！\n");
+
+    
+    char *Sql_Sentence = new char[200];
+    
+    if(sql==nullptr)
+    {
+        cout<<"please enter sql(support all sql sentence): "<<endl;
+        cin.getline(Sql_Sentence, 200);
+        cout<<"sql sentence is"<<Sql_Sentence<<endl;
+    }
+    else
+    {
+        // cout<<"run default sql sentence."<<endl;
+        // Sql_Insert_Buffer = sql;
+        strcpy(Sql_Sentence, sql);
+        //cout<<"sql sentence is: "<<Sql_Insert_Buffer<<"."<<endl;
+    }
+    
+    if (sqlite3_get_table(Database,Sql_Sentence,&colResult,&nRow,&nColumn,&err_msg))
+    {
+        cout<<"Operation fail"<<err_msg;
+        cout<<"The sql sentence is: "<<Sql_Sentence;
+        exit(-1);
+    }
+    sqlite3_free_table(colResult);
+    
+    if (sqlite3_close(Database) != SQLITE_OK)
+    {
+        printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
+        exit(-1);
+    }
+    //else printf("关闭数据库成功！\n");
+    //    else cout<<"Data inserted successfully"<<endl;
+    
+    delete[] Sql_Sentence;
+    return nRow;
 }

@@ -37,8 +37,6 @@ int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
 void deletePointer(sqlite3 *Database, char *err_msg);
 
-int Get_Event_Number_From_Database(int CatalogueIndex);
-
 void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql);
 
 
@@ -46,6 +44,11 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);
 
 
 void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);
+
+
+//coding by lgx 2017.8.8
+//返回 Select的数据的行数; 可改写成返回行数、列数、数据等
+int Get_Row_From_Database(sqlite3 *Database,char* err_msg,char *sql);
 
 
 #endif /* Database_controll_API_hpp */

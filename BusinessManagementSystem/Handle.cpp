@@ -6,8 +6,7 @@
 //  Copyright © 2017年 Lean. All rights reserved.
 //
 
-#include "Handle.h"
-#include "Data.h"
+#include "Handle.hpp"
 
 #include "Controller.hpp"
 
@@ -19,18 +18,9 @@ using namespace std;
 
 void Start()
 {
-    CatalogueData List[3];
-    string All_Event="All Event";
-    string Schedule="Schedule";
-    string Finished="Finished";
-    
-    SetCatalogue(&List[0],0,0, All_Event);
-    SetCatalogue(&List[1],1,0, Schedule);
-    SetCatalogue(&List[2],2,0, Finished);
-
-    
-    //Initialize_DataBase();
-    //incomplete：缺少判断条件，若table已存在则不创建新表
+   
+    //incomplete：缺少判断条件，若数据库已存在则不运行
+    Initialize_DataBase();
     
     int Command = 1;
     
@@ -42,20 +32,22 @@ void Start()
     {
         switch (Command)
         {
-            case 1 :DisplayCatalogueList(List,&Command,MenuIndex);break;
-            case 2 :DisplayEventList(List,&Command,MenuIndex);break;
-            case 3 :DisplayEvent(List, &Command, MenuIndex);break;
-            case 4 :AddEvent(List, &Command,MenuIndex);break;
-            case 5 :UpdateEvent(List, &Command, MenuIndex);break;
-            case 6:DeleteEvent(List, &Command, MenuIndex);break;
+            case 1 :DisplayCatalogueList(&Command,MenuIndex);break;
+            case 2 :DisplayEventList(&Command,MenuIndex);break;
+            case 3 :DisplayEvent(&Command, MenuIndex);break;
+            case 4 :AddEvent(&Command,MenuIndex);break;
+            case 5 :UpdateEvent(&Command, MenuIndex);break;
+            case 6:DeleteEvent(&Command, MenuIndex);break;
         }
     }
     
 }
 
-void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
+void DisplayCatalogueList(int* Command,int* MenuIndex)
 {
     int tmp;
+    int total=Get_Total_Number_From_DataBase(0, 0);
+    
     cout<<"————————————————————"<<endl;
     cout<<"——欢迎使用事务管理系统——"<<endl;
     cout<<"——————— 列表 ————————"<<endl;
@@ -65,11 +57,12 @@ void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
         cout<<i+1<<"."<<List[i].Name<<endl;
     }
      */
-    Get_Catalogue_From_DataBase();
-    cout<<"————————————————————"<<endl;
+    Get_Catalogue_From_DataBase(0);
+    cout<<"--------------------"<<endl;
     cout<<"请输入你要查看的事务分类编号(0 退出|-1 添加事项):";
     cin>>tmp;
-    if (tmp>=1&&tmp<=3)
+    
+    if (tmp>=1&&tmp<=total)
     {
         *Command= 2 ;
         MenuIndex[0] = tmp;
@@ -94,22 +87,27 @@ void DisplayCatalogueList(CatalogueData* List,int* Command,int* MenuIndex)
     
 }
 
-void DisplayEventList(CatalogueData* List,int* Command,int* MenuIndex)
+void DisplayEventList(int* Command,int* MenuIndex)
 {
     int tmp;
+    int total=Get_Total_Number_From_DataBase(1, MenuIndex[0]);
+    
     cout<<"————————————————————"<<endl;
-    cout<<"<"<<List[MenuIndex[0]-1].Name<<">"<<endl;
+   
+    Get_Catalogue_From_DataBase(MenuIndex[0]);
+    cout<<"--------------------"<<endl;
+    Get_EventList_From_DataBase(MenuIndex[0]);
+    cout<<"--------------------"<<endl;
+    
 
-    Get_EventList_From_DataBase(&List[MenuIndex[0]-1]);
     
-    if(List[MenuIndex[0]-1].Total!=0)
-    cout<<"请输入你要查看的事项编号,\n";
-    
+    if(total!=0)
+        cout<<"请输入你要查看的事项编号,"<<endl;
     cout<<"(0 后退|-1 添加事项):";
     
     cin>>tmp;
     
-    if(tmp<=List[MenuIndex[0]-1].Total&&tmp>=1)
+    if(tmp<=total&&tmp>=1)
     {
         *Command= 3 ;
         MenuIndex[1]=tmp;
@@ -132,13 +130,16 @@ void DisplayEventList(CatalogueData* List,int* Command,int* MenuIndex)
     }
 }
 
-void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex)
+void DisplayEvent(int* Command,int* MenuIndex)
 {
     int tmp;
     cout<<"————————————————————"<<endl;
 
-    Get_Event_From_DataBase(&List[MenuIndex[0]-1], MenuIndex[1]);
+    Get_Event_From_DataBase(MenuIndex[0], MenuIndex[1]);
+    
+    cout<<"--------------------"<<endl;
     cout<<"(0 后退|-1 修改事项|-2 删除事项): ";
+    
     cin>>tmp;
     
     if(tmp==0)
@@ -163,10 +164,11 @@ void DisplayEvent(CatalogueData* List,int* Command,int* MenuIndex)
     }
 }
 
-void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
+void AddEvent(int* Command,int* MenuIndex)
 {
     int tmp;
 
+    //当没有选择添加到哪个分类时
     if(MenuIndex[0]==-1)
     {
         cout<<"请输出你要添加进入的<分类>编号: ";
@@ -187,8 +189,10 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
     }
     cout<<"————————————————————"<<endl;
    
+    //incomplete:终止输入模块
     if(/* DISABLES CODE */ (1))
     {
+        int total=Get_Total_Number_From_DataBase(1, MenuIndex[0]);
         
         int type=1;
         string title;
@@ -213,49 +217,27 @@ void AddEvent(CatalogueData* List,int* Command,int* MenuIndex)
         //incomplete：检测输入是否合法，加入当前系统时间
         
         //写入数据库
-        Set_To_DataBase(&List[MenuIndex[0]-1], type, title, detail, FormatTime(begin), FormatTime(end));
-        cout<<List[MenuIndex[0]-1].Total;
-        List[MenuIndex[0]-1].Total++;
-        cout<<List[MenuIndex[0]-1].Total;
+        Set_Event_To_DataBase(MenuIndex[0],total,type,title,detail,FormatTime(begin),FormatTime(end));
         
         *Command=3;
-        MenuIndex[1]=List[MenuIndex[0]-1].Total;
+        MenuIndex[1]=total;
+        
         cout<<"————————————————————"<<endl;
         cout<<"添加成功!"<<endl;
     }
     
-    /*
-    cout<<"————————————————————"<<endl;
-    if(tmp==1)
-    {
-        cout<<"————————————————————"<<endl;
-        cout<<"添加成功！"<<endl;
-        
-        //Display this new Event
-        *Command=3;
-        MenuIndex[1]=List[MenuIndex[0]-1].Total;
-    }
-    else
-    {
-        cout<<"————————————————————"<<endl;
-        cout<<"添加失败。"<<endl;
-        
-        //Come back to Event List
-        *Command=2;
-    }
-     */
 }
 
-void DeleteEvent(CatalogueData* List,int* Command,int* MenuIndex)
+void DeleteEvent(int* Command,int* MenuIndex)
 {
+    int total=Get_Total_Number_From_DataBase(1, MenuIndex[1]);
     
     //cout<<"确定删除？(1 确定|0 取消)？";
     cout<<"————————————————————"<<endl;
-    if(MenuIndex[1]>=1&&MenuIndex[1]<=List[MenuIndex[0]-1].Total)
+    if(MenuIndex[1]>=1&&MenuIndex[1]<=total)
     {
-        Delete_Event_From_Database(&List[MenuIndex[0]-1], MenuIndex[1]);
+        Delete_Event_From_Database(MenuIndex[0], MenuIndex[1]);
         cout<<"删除成功"<<endl;
-        List[MenuIndex[0]-1].Total--;
         *Command=2; //come back to Event List
     }
     else
@@ -267,8 +249,9 @@ void DeleteEvent(CatalogueData* List,int* Command,int* MenuIndex)
     }
 }
 
-void UpdateEvent(CatalogueData* List,int* Command,int* MenuIndex)
+void UpdateEvent(int* Command,int* MenuIndex)
 {
+    //incomplete:终止输入模块
     if(/* DISABLES CODE */ (1))
     {
         
@@ -295,10 +278,11 @@ void UpdateEvent(CatalogueData* List,int* Command,int* MenuIndex)
         cin>>end;
         //incomplete：检测输入是否合法
         
+        Update_Event_From_Database(MenuIndex[0], MenuIndex[1], type, title, detail,FormatTime(begin), FormatTime(end));
         
-        Update_Event_From_Database(&List[MenuIndex[0]-1], MenuIndex[1], type, title, detail,FormatTime(begin), FormatTime(end));
         cout<<"————————————————————"<<endl;
         cout<<"修改成功!"<<endl;
+        
         *Command=3;
     }
     
