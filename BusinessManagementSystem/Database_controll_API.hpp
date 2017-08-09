@@ -37,7 +37,7 @@ int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
 void deletePointer(sqlite3 *Database, char *err_msg);
 
-void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql);
+void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql,char *table);
 
 
 void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);

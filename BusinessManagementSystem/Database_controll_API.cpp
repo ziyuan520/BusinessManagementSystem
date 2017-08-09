@@ -101,7 +101,7 @@ void deletePointer(sqlite3 *Database, char *err_msg){
     delete Database;
 }
 
-void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
+void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql,char *table){
     //open
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {
@@ -127,9 +127,15 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
     //
     
     //choose whether excute drop
-    char Sql_Delete[100]= "drop table event";
+    char *Sql_Delete=new char[100];
+    strcpy(Sql_Delete,"drop table ");
+    strcat(Sql_Delete,table);
+    
+    
     char *tableName = new char[200];
-    strcpy(tableName, "'event'");
+    strcpy(tableName, "'");
+    strcat(tableName,table);
+    strcat(tableName,"'");
     //
     
     //excute delete
@@ -144,7 +150,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
     
     //excute sql create
     if (sqlite3_exec(Database, Sql_Create_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
-        cout<<"Operation fail"<<err_msg;
+        cout<<"Operation fail:"<<err_msg;
         exit(-1);
     }
     else cout<<"Database created successfully"<<endl;
@@ -162,6 +168,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
     //delete
     delete []Sql_Create_Buffer;
     delete []tableName;
+    delete []Sql_Delete;
     //
     
 }

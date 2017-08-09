@@ -26,14 +26,19 @@ void Initialize_DataBase()
     //if(table未/已经创建)
     //creat table : event
     char Sql_Create_Buffer[200]="create table event(Id integer primary key,Catalogue integer,Event integer,Title text,Detail text,State integer,Start_Time text,End_Time text)";
-    createTable_Intelligent_API(Database, err_msg, Sql_Create_Buffer);
+    char table[20];
+    
+    strcpy(table,"event");
+    
+    createTable_Intelligent_API(Database, err_msg, Sql_Create_Buffer,table);
     
     if(1)
     {
         //creat table : catalogue
         strcpy(Sql_Create_Buffer, "create table catalogue(Id integer primary key,Name text)");
-        Sql_Intelligent_API(Database, err_msg, Sql_Create_Buffer);
+        strcpy(table,"catalogue");
         
+        createTable_Intelligent_API(Database, err_msg, Sql_Create_Buffer, table);
         char Sql_Insert_Buffer[200]="insert into catalogue values (1,'<全部事项>')";
         Sql_Intelligent_API(Database, err_msg, Sql_Insert_Buffer);
         

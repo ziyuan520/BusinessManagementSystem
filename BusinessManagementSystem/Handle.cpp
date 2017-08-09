@@ -37,7 +37,7 @@ void Start()
             case 3 :DisplayEvent(&Command, MenuIndex);break;
             case 4 :AddEvent(&Command,MenuIndex);break;
             case 5 :UpdateEvent(&Command, MenuIndex);break;
-            case 6:DeleteEvent(&Command, MenuIndex);break;
+            case 6 :DeleteEvent(&Command, MenuIndex);break;
         }
     }
     
@@ -220,7 +220,7 @@ void AddEvent(int* Command,int* MenuIndex)
         Set_Event_To_DataBase(MenuIndex[0],total,type,title,detail,FormatTime(begin),FormatTime(end));
         
         *Command=3;
-        MenuIndex[1]=total;
+        MenuIndex[1]=total+1;
         
         cout<<"————————————————————"<<endl;
         cout<<"添加成功!"<<endl;
